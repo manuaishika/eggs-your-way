@@ -311,9 +311,11 @@ section{padding:38px 0 64px;scroll-margin-top:84px;}
 .photo-slot svg{width:34px;height:34px;color:#84C8EE;}
 .photo-slot b{display:block;font-family:var(--display);font-size:1rem;color:var(--teal);}
 .photo-slot p{font-size:.9rem;color:#4c7d95;max-width:38ch;margin:2px auto 0;}
-.photo-slot.small{margin-top:0;margin-bottom:6px;padding:18px 12px;gap:6px;}
-.photo-slot.small svg{width:24px;height:24px;}
-.photo-slot.small p{font-size:.8rem;margin:0;}
+
+/* ---------- product visual (shop page) ---------- */
+.product-visual{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:8px;}
+.product-visual svg{width:64px;height:64px;}
+.product-visual p{font-size:.78rem;color:#4c7d95;margin:0;}
 
 /* ---------- footer ---------- */
 footer{background:var(--teal);color:#dcf0fa;padding:44px 0 38px;}

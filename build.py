@@ -111,6 +111,28 @@ def egg_icon(cid, label, fill=None, level=None, wave_stroke=None, highlight=Fals
     return "".join(out)
 
 
+BOTTLE = ("M30 22h36c3 0 5 2 6 5l4 14c1 5 2 10 2 15v26c0 6-5 11-11 11H29"
+          "c-6 0-11-5-11-11V56c0-5 1-10 2-15l4-14c1-3 3-5 6-5Z")
+
+
+def bottle_icon(cid, label, fill, level=50, top_stroke=None):
+    """A cute little bottle, filled to `level` (lower number = fuller)."""
+    out = ['<svg viewBox="0 0 96 96" role="img" aria-label="%s">' % label]
+    out.append('<defs><clipPath id="%s"><path d="%s"/></clipPath></defs>' % (cid, BOTTLE))
+    out.append('<rect x="40" y="6" width="16" height="10" rx="3" fill="#105E82"/>')
+    out.append('<rect x="43" y="14" width="10" height="8" fill="#fff" stroke="#105E82" stroke-width="4"/>')
+    out.append('<path d="%s" fill="#fff"/>' % BOTTLE)
+    out.append('<g clip-path="url(#%s)"><rect x="14" y="%d" width="68" height="80" fill="%s"/>' % (cid, level, fill))
+    if top_stroke:
+        out.append('<rect x="14" y="%d" width="68" height="3" fill="%s"/>' % (level, top_stroke))
+    out.append('</g>')
+    out.append('<rect x="20" y="58" width="56" height="8" fill="#105E82" opacity=".1"/>')
+    out.append('<path d="%s" fill="none" stroke="#105E82" stroke-width="5"/>' % BOTTLE)
+    out.append('<path d="M34 30c-2 6-3 12-3 18" fill="none" stroke="#84C8EE" stroke-width="4" stroke-linecap="round"/>')
+    out.append('</svg>')
+    return "".join(out)
+
+
 ICONS = {
  "cake": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20.5h16"/><path d="M5.5 20.5v-6a2 2 0 012-2h9a2 2 0 012 2v6"/><path d="M12 12.5V9.5"/><path d="M12 7.8c.9-.9.6-1.9 0-2.5-.6.6-.9 1.6 0 2.5Z"/></svg>',
  "cup":  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 9h11v6.5a4 4 0 01-4 4h-3a4 4 0 01-4-4V9Z"/><path d="M15.5 10.5h2a2.6 2.6 0 010 5.2h-2"/><path d="M7.5 3.5v2M11.5 3v2.5"/></svg>',
@@ -345,9 +367,9 @@ home = """
 """ % dict(
     wa=WA, curve=CURVE, arc=ARC,
     i1=egg_icon("c1", "A whole egg in its shell", highlight=True),
-    i2=egg_icon("c2", "An egg holding liquid whole egg", fill="#FFD447", level=50),
-    i3=egg_icon("c3", "An egg holding liquid egg white", fill="#EDF7FD", level=50, wave_stroke="#84C8EE"),
-    i4=egg_icon("c4", "An egg holding liquid egg yolk", fill="#F0B71E", level=34),
+    i2=bottle_icon("c2", "A bottle of liquid whole egg", fill="#FFD447", level=50),
+    i3=bottle_icon("c3", "A bottle of liquid egg white", fill="#EDF7FD", level=50, top_stroke="#84C8EE"),
+    i4=bottle_icon("c4", "A bottle of liquid egg yolk", fill="#F0B71E", level=34),
     **ICONS)
 
 CALC_JS = """<script>
@@ -570,20 +592,17 @@ page("why", "Why it works — Eggs Your Way",
      "How pasteurised shell eggs and liquid egg are made, why they keep longer, and what that means if you bake or track your macros.",
      why_it_works, filename="why-it-works.html")
 
-PHOTO_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>'
-
-
-def product_card(title, desc, packs, wa_link):
+def product_card(title, desc, packs, wa_link, icon):
     return """<article class="egg-card">
-          <div class="photo-slot small">
+          <div class="product-visual">
             %s
-            <p>Photo of the pack</p>
+            <p>Real pack photo coming soon</p>
           </div>
           <h3>%s</h3>
           <p>%s</p>
           <p class="footnote">%s</p>
           <a class="btn btn-plain" href="%s" target="_blank" rel="noopener">Order on WhatsApp</a>
-        </article>""" % (PHOTO_ICON, title, desc, packs, wa_link)
+        </article>""" % (icon, title, desc, packs, wa_link)
 
 
 # ------------------------------------------------------------------ shop
@@ -612,19 +631,23 @@ shop = """
     p1=product_card("Pasteurised shell eggs",
                      "Ordinary-looking eggs, gently heat-treated in the shell. Crack them into tiramisu, mayonnaise or a morning shake without thinking twice.",
                      "Trays of 6, 12 and 30. [Price per tray]",
-                     wa("Hi! I'd like to order pasteurised shell eggs.")),
+                     wa("Hi! I'd like to order pasteurised shell eggs."),
+                     egg_icon("s1", "A whole egg in its shell", highlight=True)),
     p2=product_card("Liquid whole egg",
                      "Whites and yolks cracked, blended and pasteurised. One litre pours about twenty eggs, and there are no shells to deal with.",
                      "1 kg pouch or 5 kg box. [Price]",
-                     wa("Hi! I'd like to order liquid whole egg.")),
+                     wa("Hi! I'd like to order liquid whole egg."),
+                     bottle_icon("s2", "A bottle of liquid whole egg", fill="#FFD447", level=50)),
     p3=product_card("Liquid egg white",
                      "Just the whites, ready to whisk. For meringue, macarons, omelettes and anyone counting their protein.",
                      "1 kg pouch or 5 kg box. [Price]",
-                     wa("Hi! I'd like to order liquid egg white.")),
+                     wa("Hi! I'd like to order liquid egg white."),
+                     bottle_icon("s3", "A bottle of liquid egg white", fill="#EDF7FD", level=50, top_stroke="#84C8EE")),
     p4=product_card("Liquid egg yolk",
                      "Only yolks, deep and rich. Made for custard, ice cream bases, hollandaise and a properly glossy carbonara.",
                      "1 kg pouch or 5 kg box. [Price]",
-                     wa("Hi! I'd like to order liquid egg yolk.")),
+                     wa("Hi! I'd like to order liquid egg yolk."),
+                     bottle_icon("s4", "A bottle of liquid egg yolk", fill="#F0B71E", level=34)),
 )
 
 page("shop", "Shop — Eggs Your Way",
