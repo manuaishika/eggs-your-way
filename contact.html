@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Eggs Your Way</title>
+<meta name="description" content="Order pasteurised eggs and liquid egg, or ask us anything.">
+<link rel="icon" href="favicon.png">
+<meta property="og:title" content="Contact — Eggs Your Way">
+<meta property="og:description" content="Order pasteurised eggs and liquid egg, or ask us anything.">
+<meta property="og:image" content="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Karla:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="mark" href="index.html">
+      <img src="logo.png" alt="Eggs Your Way">
+      <span>Eggs Your Way</span>
+    </a>
+    <nav>
+      <a href="process.html">How it's made</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="sky-panel page-head">
+    <div class="wrap">
+      <h1>Tell us what you cook</h1>
+      <p>And roughly how much of it. We'll suggest the right pack and send a price.</p>
+    </div>
+    <svg class="curve" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 26 C400 112 1040 112 1440 26 L1440 100 L0 100 Z" fill="#E9F5FC"/>
+    </svg>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="form">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" type="text" autocomplete="name" placeholder="">
+        </div>
+        <div class="field">
+          <label for="f-kind">I'm ordering for</label>
+          <select id="f-kind">
+            <option>my own kitchen</option>
+            <option>a caf&eacute; or bakery</option>
+            <option>a hotel or cloud kitchen</option>
+            <option>a gym or meal-prep service</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-what">What you're after</label>
+          <textarea id="f-what" placeholder="e.g. 5 litres of egg white a week, and a tray of shell eggs"></textarea>
+        </div>
+        <button class="btn btn-yolk" id="send" type="button">Send on WhatsApp</button>
+        <p class="footnote" id="formnote">This fills in a WhatsApp message for you. Nothing is sent until you press send in WhatsApp.</p>
+      </div>
+
+      <div class="contact-lines">
+        <p>Or reach us directly</p>
+        <p><a href="https://wa.me/910000000000">+91 00000 00000</a></p>
+        <p><a href="mailto:hello@eggsyourway.in">hello@eggsyourway.in</a></p>
+        <p>9am to 7pm, Monday to Saturday. Deliveries across [city].</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-sky">
+    <div class="wrap">
+      <div class="head"><h2>Before you ask</h2></div>
+      <div class="trio">
+        <div class="card">
+          <h3>Is there a minimum order?</h3>
+          <p>[Yes or no, and the number. Say it plainly here rather than making people ask.]</p>
+        </div>
+        <div class="card">
+          <h3>How fast is delivery?</h3>
+          <p>[Same day, next day, fixed days of the week &mdash; whatever is true, including the cut-off time for an order.]</p>
+        </div>
+        <div class="card">
+          <h3>Can I see the licence?</h3>
+          <p>Our FSSAI licence number is in the footer of every page, and we'll happily send the certificate if you need it on file.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      <h3>Eggs Your Way</h3>
+      <p>Pasteurised shell eggs and liquid egg, delivered across [city].</p>
+    </div>
+    <div>
+      <p><a href="https://wa.me/910000000000">+91 00000 00000</a></p>
+      <p><a href="mailto:hello@eggsyourway.in">hello@eggsyourway.in</a></p>
+      <p>Orders taken 9am to 7pm, Monday to Saturday.</p>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="process.html">How it's made</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="wrap"><p class="foot-note">FSSAI licence [number] &middot; &copy; <span id="yr">2026</span> Eggs Your Way</p></div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script>
+(function(){
+  var phone = '910000000000';   // change this in one place
+  var btn = document.getElementById('send');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var name = document.getElementById('f-name').value.trim();
+    var kind = document.getElementById('f-kind').value;
+    var what = document.getElementById('f-what').value.trim();
+    if(!what){
+      document.getElementById('formnote').textContent =
+        'Add a line about what you need, then press send.';
+      document.getElementById('f-what').focus();
+      return;
+    }
+    var msg = 'Hi! ' + (name ? 'This is ' + name + '. ' : '') +
+              "I'm ordering for " + kind + '. ' + what;
+    window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+})();
+</script>
+</body>
+</html>
