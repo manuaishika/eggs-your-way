@@ -234,6 +234,67 @@ section{padding:38px 0 64px;scroll-margin-top:84px;}
 .contact-lines{display:grid;gap:8px;margin-top:26px;text-align:center;font-size:1rem;}
 .contact-lines a{font-weight:600;}
 
+/* ---------- animated egg (home) ---------- */
+.egg-band{text-align:center;}
+.egg-anim{width:198px;height:180px;margin:0 auto;overflow:visible;}
+.egg-anim svg{width:100%;height:100%;overflow:visible;}
+.egg-caption{margin-top:16px;font-size:1rem;font-weight:500;color:var(--ink);}
+
+.egg-anim .bubble{fill:#FFEFA8;opacity:0;}
+.egg-anim .wave-group{transform:translate(136px,178px);}
+.egg-anim .yolk{transform-origin:136px 118px;}
+
+.egg-anim.in-view .wave-group{
+  animation:egg-fill 2.4s cubic-bezier(.33,.86,.4,1) .2s forwards;
+}
+.egg-anim.in-view .yolk{
+  animation:egg-bounce .9s ease-out 2.6s forwards;
+}
+.egg-anim.in-view .wave-back{
+  animation:wave-slide-left 3.2s linear .2s infinite;
+}
+.egg-anim.in-view .wave-front{
+  animation:wave-slide-right 2.4s linear .2s infinite;
+}
+.egg-anim.in-view .bubble:nth-of-type(1){animation:bubble-rise 1.5s .6s ease-out forwards;}
+.egg-anim.in-view .bubble:nth-of-type(2){animation:bubble-rise 1.4s 1.1s ease-out forwards;}
+.egg-anim.in-view .bubble:nth-of-type(3){animation:bubble-rise 1.6s 1.6s ease-out forwards;}
+.egg-anim.in-view .bubble:nth-of-type(4){animation:bubble-rise 1.3s 2.0s ease-out forwards;}
+
+@keyframes egg-fill{
+  0%{transform:translate(136px,178px);}
+  100%{transform:translate(136px,60px);}
+}
+@keyframes egg-bounce{
+  0%{transform:scale(1,1);}
+  35%{transform:scale(1.07,.9);}
+  65%{transform:scale(.96,1.05);}
+  100%{transform:scale(1,1);}
+}
+@keyframes wave-slide-left{
+  from{transform:translateX(0);}
+  to{transform:translateX(-40px);}
+}
+@keyframes wave-slide-right{
+  from{transform:translateX(0);}
+  to{transform:translateX(40px);}
+}
+@keyframes bubble-rise{
+  0%{opacity:0;transform:translateY(0);}
+  20%{opacity:.9;}
+  100%{opacity:0;transform:translateY(-58px);}
+}
+
+/* ---------- photo placeholder (process page) ---------- */
+.photo-slot{
+  margin-top:22px;border:2px dashed var(--sky-mid);border-radius:26px;
+  background:var(--sky-pale);padding:36px 24px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.photo-slot svg{width:34px;height:34px;color:#84C8EE;}
+.photo-slot b{display:block;font-family:var(--display);font-size:1rem;color:var(--teal);}
+.photo-slot p{font-size:.9rem;color:#4c7d95;max-width:38ch;margin:2px auto 0;}
+
 /* ---------- footer ---------- */
 footer{background:var(--teal);color:#dcf0fa;padding:44px 0 38px;}
 .foot-in{display:flex;flex-wrap:wrap;gap:26px;align-items:flex-start;justify-content:space-between;}
@@ -247,4 +308,8 @@ footer nav{display:grid;gap:4px;}
   html{scroll-behavior:auto;}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
     transition-duration:.01ms !important;}
+  .egg-anim .wave-group{transform:translate(136px,60px) !important;animation:none !important;}
+  .egg-anim .wave-back,.egg-anim .wave-front{animation:none !important;transform:translateX(0) !important;}
+  .egg-anim .yolk{animation:none !important;transform:none !important;}
+  .egg-anim .bubble{animation:none !important;opacity:0 !important;}
 }

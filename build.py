@@ -111,7 +111,7 @@ def page(name, title, desc, body, extra=""):
                        c_process=cur["process"], c_about=cur["about"], c_contact=cur["contact"])
     html += body
     html += FOOT.format(extra=extra)
-    open(name + ".html", "w").write(html)
+    open(name + ".html", "w", encoding="utf-8").write(html)
     print("wrote", name + ".html")
 
 
@@ -266,6 +266,33 @@ home = """
       </div>
     </div>
   </section>
+
+  <section class="on-sky egg-band">
+    <div class="wrap">
+      <div class="egg-anim" id="eggAnim">
+        <svg viewBox="0 0 256 200" aria-hidden="true">
+          <defs>
+            <clipPath id="yolkClip"><circle cx="136" cy="118" r="40"/></clipPath>
+          </defs>
+          <path class="egg-white" d="M128 16 C160 12 190 22 208 48 C226 72 222 100 214 118 C228 136 224 160 204 176 C186 190 162 184 140 190 C112 196 80 192 58 172 C34 150 26 122 36 98 C20 82 28 54 54 36 C78 18 104 20 128 16 Z" fill="#fff"/>
+          <g class="yolk">
+            <circle class="yolk-outline" cx="136" cy="118" r="40" fill="none" stroke="#F0B71E" stroke-width="2" opacity=".35"/>
+            <g clip-path="url(#yolkClip)">
+              <g class="wave-group">
+                <path class="wave-back" d="M-160,0 q10,-8,20,0 q10,8,20,0 q10,-8,20,0 q10,8,20,0 q10,-8,20,0 q10,8,20,0 q10,-8,20,0 q10,8,20,0 q10,-8,20,0 q10,8,20,0 q10,-8,20,0 q10,8,20,0 q10,-8,20,0 q10,8,20,0 q10,-8,20,0 q10,8,20,0 V220 H-160 Z" fill="#F0B71E" opacity=".55"/>
+                <path class="wave-front" d="M-160,0 q10,6,20,0 q10,-6,20,0 q10,6,20,0 q10,-6,20,0 q10,6,20,0 q10,-6,20,0 q10,6,20,0 q10,-6,20,0 q10,6,20,0 q10,-6,20,0 q10,6,20,0 q10,-6,20,0 q10,6,20,0 q10,-6,20,0 q10,6,20,0 q10,-6,20,0 V220 H-160 Z" fill="#FFD447"/>
+              </g>
+              <circle class="bubble" cx="124" cy="148" r="4"/>
+              <circle class="bubble" cx="148" cy="150" r="3"/>
+              <circle class="bubble" cx="132" cy="142" r="5"/>
+              <circle class="bubble" cx="140" cy="146" r="3.5"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <p class="egg-caption">Still just an egg &mdash; pasteurised, not processed.</p>
+    </div>
+  </section>
 """ % dict(
     wa=WA, curve=CURVE, arc=ARC,
     i1=egg_icon("c1", "A whole egg in its shell", highlight=True),
@@ -312,9 +339,29 @@ CALC_JS = """<script>
 })();
 </script>"""
 
+EGG_JS = """<script>
+(function(){
+  var el = document.getElementById('eggAnim');
+  if(!el) return;
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          el.classList.add('in-view');
+          io.unobserve(el);
+        }
+      });
+    }, {threshold:.4});
+    io.observe(el);
+  } else {
+    el.classList.add('in-view');
+  }
+})();
+</script>"""
+
 page("index", "Eggs Your Way — pasteurised eggs and liquid egg",
      "Pasteurised shell eggs and ready-to-pour liquid egg. Safe to eat raw, kept cold from the pasteuriser to your kitchen.",
-     home, CALC_JS)
+     home, CALC_JS + EGG_JS)
 
 # -------------------------------------------------------------- process
 process = """
@@ -364,6 +411,11 @@ process = """
           <p>Each egg is marked so you can tell it apart from an ordinary one, then trayed and moved into cold storage.</p>
         </div></div>
       </div>
+      <div class="photo-slot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+        <b>Photo placeholder</b>
+        <p>Add a real photo here &mdash; eggs going into the water bath, or trays coming out of it.</p>
+      </div>
     </div>
   </section>
 
@@ -391,6 +443,11 @@ process = """
           <h3>Filled and sealed cold</h3>
           <p>Packed into sealed pouches and cartons at low temperature, dated, and kept at 4&deg;C until it reaches you.</p>
         </div></div>
+      </div>
+      <div class="photo-slot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+        <b>Photo placeholder</b>
+        <p>Add a real photo here &mdash; the pasteuriser line, or liquid egg being poured into pouches.</p>
       </div>
     </div>
   </section>
