@@ -1,7 +1,16 @@
 #!/usr/bin/env python3
-"""Assembles the four pages so the nav and footer stay identical everywhere."""
+"""Assembles the pages so the nav and footer stay identical everywhere."""
 
-WA = "https://wa.me/919599327947?text=Hi!%20I%27d%20like%20to%20order%20eggs."
+from urllib.parse import quote
+
+PHONE = "919599327947"
+
+
+def wa(text):
+    return "https://wa.me/%s?text=%s" % (PHONE, quote(text))
+
+
+WA = wa("Hi! I'd like to order eggs.")
 
 HEAD = """<!DOCTYPE html>
 <html lang="en">
@@ -16,7 +25,7 @@ HEAD = """<!DOCTYPE html>
 <meta property="og:image" content="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Karla:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,7 +37,11 @@ HEAD = """<!DOCTYPE html>
       <span>Eggs Your Way</span>
     </a>
     <nav>
-      <a href="process.html"{c_process}>How it's made</a>
+      <a href="index.html"{c_home}>Home</a>
+      <a href="shop.html"{c_shop}>Shop</a>
+      <a href="why-it-works.html"{c_why}>Why it works</a>
+      <a href="recipes.html"{c_recipes}>Recipes</a>
+      <a href="business.html"{c_business}>For Business</a>
       <a href="about.html"{c_about}>About</a>
       <a href="contact.html"{c_contact}>Contact</a>
     </nav>
@@ -53,12 +66,15 @@ FOOT = """</main>
     </div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="process.html">How it's made</a>
+      <a href="shop.html">Shop</a>
+      <a href="why-it-works.html">Why it works</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="business.html">For Business</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
   </div>
-  <div class="wrap"><p class="foot-note">FSSAI licence [number] &middot; &copy; <span id="yr">2026</span> Eggs Your Way</p></div>
+  <div class="wrap"><p class="foot-note"><a href="about.html#certifications">Certifications</a> &middot; &copy; <span id="yr">2026</span> Eggs Your Way</p></div>
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 {extra}
@@ -103,16 +119,20 @@ ICONS = {
 }
 
 
-def page(name, title, desc, body, extra=""):
-    cur = {k: "" for k in ("process", "about", "contact")}
+NAV_KEYS = ("home", "shop", "why", "recipes", "business", "about", "contact")
+
+
+def page(name, title, desc, body, extra="", filename=None):
+    cur = {k: "" for k in NAV_KEYS}
     if name in cur:
         cur[name] = ' aria-current="page"'
-    html = HEAD.format(title=title, desc=desc,
-                       c_process=cur["process"], c_about=cur["about"], c_contact=cur["contact"])
+    fmt = {"c_" + k: v for k, v in cur.items()}
+    html = HEAD.format(title=title, desc=desc, **fmt)
     html += body
     html += FOOT.format(extra=extra)
-    open(name + ".html", "w", encoding="utf-8").write(html)
-    print("wrote", name + ".html")
+    fn = filename or (name + ".html")
+    open(fn, "w", encoding="utf-8").write(html)
+    print("wrote", fn)
 
 
 # ----------------------------------------------------------------- home
@@ -121,10 +141,9 @@ home = """
     <div class="wrap">
       <img class="hero-logo" src="logo.png" alt="Eggs Your Way logo: bold lettering inside an egg with a yolk trailing speed lines">
       <h1>Eggs you can eat raw. And eggs you can pour.</h1>
-      <p class="sub">Pasteurised in the shell or cracked into cartons, then kept cold all the way to your kitchen.</p>
       <div class="hero-cta">
         <a class="btn btn-yolk" href="%(wa)s" target="_blank" rel="noopener">Order on WhatsApp</a>
-        <a class="btn btn-plain" href="process.html">See how it's made</a>
+        <a class="btn btn-plain" href="why-it-works.html">See why it works</a>
       </div>
     </div>
 %(curve)s
@@ -155,6 +174,9 @@ home = """
           <p>Only yolks, deep and rich. Made for custard, ice cream bases, hollandaise and a properly glossy carbonara.</p>
         </article>
       </div>
+      <div style="text-align:center;margin-top:30px">
+        <a class="btn btn-plain" href="shop.html">See the full shop</a>
+      </div>
     </div>
   </section>
 
@@ -176,6 +198,30 @@ home = """
         <div class="card">
           <h3>Nothing else goes in</h3>
           <p>No preservatives, no colour, no additives. Heat and time do the work, so taste and texture stay where they should.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <div class="head">
+        %(arc)s
+        <h2>What people say</h2>
+        <p>Real words from real customers, swapped in as they come in.</p>
+      </div>
+      <div class="trio">
+        <div class="card">
+          <p>&ldquo;[A real quote about reliability, freshness, or how it changed a recipe.]&rdquo;</p>
+          <p class="cite">[Name], [context &mdash; e.g. home baker in Gurugram]</p>
+        </div>
+        <div class="card">
+          <p>&ldquo;[A real quote from a caf&eacute; or business customer about consistency or convenience.]&rdquo;</p>
+          <p class="cite">[Name], [business name]</p>
+        </div>
+        <div class="card">
+          <p>&ldquo;[A real quote from someone using it for raw recipes or protein tracking.]&rdquo;</p>
+          <p class="cite">[Name], [context]</p>
         </div>
       </div>
     </div>
@@ -216,7 +262,10 @@ home = """
 
   <section id="for">
     <div class="wrap">
-      <div class="head"><h2>Made for</h2></div>
+      <div class="head">
+        <h2>Made for</h2>
+        <p>Ordering for a caf&eacute;, hotel or cloud kitchen? <a href="business.html">See our business page</a>.</p>
+      </div>
       <div class="for-grid">
         <div class="for-item">
           <div class="blob" aria-hidden="true">%(cake)s</div>
@@ -359,12 +408,12 @@ EGG_JS = """<script>
 })();
 </script>"""
 
-page("index", "Eggs Your Way — pasteurised eggs and liquid egg",
+page("home", "Eggs Your Way — pasteurised eggs and liquid egg",
      "Pasteurised shell eggs and ready-to-pour liquid egg. Safe to eat raw, kept cold from the pasteuriser to your kitchen.",
-     home, CALC_JS + EGG_JS)
+     home, CALC_JS + EGG_JS, filename="index.html")
 
-# -------------------------------------------------------------- process
-process = """
+# ---------------------------------------------------------- why it works
+why_it_works = """
   <div class="sky-panel page-head">
     <div class="wrap">
       <h1>A warm bath, and nothing else</h1>
@@ -517,9 +566,186 @@ process = """
   </section>
 """ % dict(curve=CURVE, arc=ARC, wa=WA)
 
-page("process", "How it's made — Eggs Your Way",
+page("why", "Why it works — Eggs Your Way",
      "How pasteurised shell eggs and liquid egg are made, why they keep longer, and what that means if you bake or track your macros.",
-     process)
+     why_it_works, filename="why-it-works.html")
+
+PHOTO_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>'
+
+
+def product_card(title, desc, packs, wa_link):
+    return """<article class="egg-card">
+          <div class="photo-slot small">
+            %s
+            <p>Photo of the pack</p>
+          </div>
+          <h3>%s</h3>
+          <p>%s</p>
+          <p class="footnote">%s</p>
+          <a class="btn btn-plain" href="%s" target="_blank" rel="noopener">Order on WhatsApp</a>
+        </article>""" % (PHOTO_ICON, title, desc, packs, wa_link)
+
+
+# ------------------------------------------------------------------ shop
+shop = """
+  <div class="sky-panel page-head">
+    <div class="wrap">
+      <h1>Shop the range</h1>
+      <p>Four products, every one pasteurised before it leaves us. Pick a pack size on WhatsApp and we'll confirm the price.</p>
+    </div>
+%(curve)s
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="range">
+        %(p1)s
+        %(p2)s
+        %(p3)s
+        %(p4)s
+      </div>
+      <p class="footnote" style="margin-top:30px">Ordering for a business? See <a href="business.html">bulk pack sizes and business pricing</a>. Questions first? Check the <a href="contact.html#faq">FAQ</a>.</p>
+    </div>
+  </section>
+""" % dict(
+    curve=CURVE,
+    p1=product_card("Pasteurised shell eggs",
+                     "Ordinary-looking eggs, gently heat-treated in the shell. Crack them into tiramisu, mayonnaise or a morning shake without thinking twice.",
+                     "Trays of 6, 12 and 30. [Price per tray]",
+                     wa("Hi! I'd like to order pasteurised shell eggs.")),
+    p2=product_card("Liquid whole egg",
+                     "Whites and yolks cracked, blended and pasteurised. One litre pours about twenty eggs, and there are no shells to deal with.",
+                     "1 kg pouch or 5 kg box. [Price]",
+                     wa("Hi! I'd like to order liquid whole egg.")),
+    p3=product_card("Liquid egg white",
+                     "Just the whites, ready to whisk. For meringue, macarons, omelettes and anyone counting their protein.",
+                     "1 kg pouch or 5 kg box. [Price]",
+                     wa("Hi! I'd like to order liquid egg white.")),
+    p4=product_card("Liquid egg yolk",
+                     "Only yolks, deep and rich. Made for custard, ice cream bases, hollandaise and a properly glossy carbonara.",
+                     "1 kg pouch or 5 kg box. [Price]",
+                     wa("Hi! I'd like to order liquid egg yolk.")),
+)
+
+page("shop", "Shop — Eggs Your Way",
+     "Pasteurised shell eggs, liquid whole egg, liquid egg white and liquid egg yolk. Order any of them on WhatsApp.",
+     shop)
+
+# --------------------------------------------------------------- recipes
+recipes = """
+  <div class="sky-panel page-head">
+    <div class="wrap">
+      <h1>Recipes</h1>
+      <p>Once the egg is already safe to eat raw, a few things get a lot simpler.</p>
+    </div>
+%(curve)s
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="trio">
+        <div class="card">
+          <h3>Classic tiramisu</h3>
+          <p>No stovetop, no worrying about raw yolk. [Real recipe and quantities to come.]</p>
+          <p class="cite">Uses liquid egg yolk</p>
+        </div>
+        <div class="card">
+          <h3>No-cook mayonnaise</h3>
+          <p>Whole egg, oil and a whisk. [Real recipe and quantities to come.]</p>
+          <p class="cite">Uses liquid whole egg</p>
+        </div>
+        <div class="card">
+          <h3>Meringue &amp; macarons</h3>
+          <p>Whisks the same way, just takes longer to reach stiff peaks. [Real recipe and quantities to come.]</p>
+          <p class="cite">Uses liquid egg white</p>
+        </div>
+      </div>
+      <div class="trio" style="margin-top:20px">
+        <div class="card">
+          <h3>Post-workout shake</h3>
+          <p>Straight into the blender with oats or a scoop. [Real recipe and quantities to come.]</p>
+          <p class="cite">Uses liquid egg white</p>
+        </div>
+        <div class="card">
+          <h3>Carbonara</h3>
+          <p>Glossy, not scrambled, and safe to eat a little looser than usual. [Real recipe and quantities to come.]</p>
+          <p class="cite">Uses liquid whole egg or yolk</p>
+        </div>
+        <div class="card">
+          <h3>Hollandaise</h3>
+          <p>Rich and forgiving to whisk over gentle heat. [Real recipe and quantities to come.]</p>
+          <p class="cite">Uses liquid egg yolk</p>
+        </div>
+      </div>
+      <p class="footnote" style="margin-top:30px">Have a recipe you want featured, or one that failed and you want fixed? <a href="%(wa)s" target="_blank" rel="noopener">Tell us on WhatsApp</a>.</p>
+    </div>
+  </section>
+""" % dict(curve=CURVE, wa=WA)
+
+page("recipes", "Recipes — Eggs Your Way",
+     "Recipe ideas that get simpler once the egg is already pasteurised and safe to eat raw.",
+     recipes)
+
+# -------------------------------------------------------------- business
+business = """
+  <div class="sky-panel page-head">
+    <div class="wrap">
+      <h1>For your business</h1>
+      <p>The same pasteurised eggs, sized and scheduled for a kitchen that orders every week.</p>
+    </div>
+%(curve)s
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="head"><h2>Built for</h2></div>
+      <div class="for-grid">
+        <div class="for-item">
+          <div class="blob" aria-hidden="true">%(cup)s</div>
+          <h3>Caf&eacute;s and bakeries</h3>
+          <p>No cracking, no separating, no bin full of shells at closing.</p>
+        </div>
+        <div class="for-item">
+          <div class="blob" aria-hidden="true">%(pan)s</div>
+          <h3>Hotels and cloud kitchens</h3>
+          <p>The same volume every service, and a food-safety box already ticked.</p>
+        </div>
+        <div class="for-item">
+          <div class="blob" aria-hidden="true">%(shaker)s</div>
+          <h3>Gyms and meal-prep services</h3>
+          <p>Egg white by the litre, measured the same way every batch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-sky">
+    <div class="wrap">
+      <div class="head"><h2>How a business account works</h2></div>
+      <div class="trio">
+        <div class="card">
+          <h3>Bulk pack sizes</h3>
+          <p>Five-kilo boxes of liquid egg, and trays of 30 for shell eggs. [Confirm the largest pack size actually offered.]</p>
+        </div>
+        <div class="card">
+          <h3>Standing orders</h3>
+          <p>[Is there a fixed weekly schedule for business accounts? Say so here, with the cut-off time to change an order.]</p>
+        </div>
+        <div class="card">
+          <h3>Paperwork sorted</h3>
+          <p>FSSAI licensed, with certificates available on request. See our <a href="about.html#certifications">certifications</a>.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:38px">
+        <a class="btn btn-yolk" href="%(wa_biz)s" target="_blank" rel="noopener">Set up a business account</a>
+      </div>
+    </div>
+  </section>
+""" % dict(curve=CURVE, wa_biz=wa("Hi! I run a business and would like to set up a standing order."), **ICONS)
+
+page("business", "For Business — Eggs Your Way",
+     "Bulk pasteurised eggs and liquid egg for cafes, hotels, cloud kitchens and meal-prep services.",
+     business)
 
 # ---------------------------------------------------------------- about
 about = """
@@ -563,6 +789,26 @@ about = """
         <div class="card">
           <h3>Tell you the truth</h3>
           <p>Real dates on packs, real answers about where things come from, and a straight no when we cannot do something.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="wrap">
+      <div class="head"><h2>Certifications</h2><p>Real licences, not badges we made up.</p></div>
+      <div class="trio">
+        <div class="card">
+          <h3>FSSAI licence</h3>
+          <p>Licence number [FSSAI number]. Certificate available on request.</p>
+        </div>
+        <div class="card">
+          <h3>Cold-chain handling</h3>
+          <p>[Describe how the cold chain is kept and checked, from pasteuriser to delivery &mdash; temperature logs, insulated transport, whatever is actually true.]</p>
+        </div>
+        <div class="card">
+          <h3>Batch testing</h3>
+          <p>[If a lab tests each batch, name it. If the check is something else, say what it is rather than leaving this blank.]</p>
         </div>
       </div>
     </div>
@@ -629,7 +875,7 @@ contact = """
     </div>
   </section>
 
-  <section class="on-sky">
+  <section class="on-sky" id="faq">
     <div class="wrap">
       <div class="head"><h2>Before you ask</h2></div>
       <div class="trio">
@@ -643,7 +889,7 @@ contact = """
         </div>
         <div class="card">
           <h3>Can I see the licence?</h3>
-          <p>Our FSSAI licence number is in the footer of every page, and we'll happily send the certificate if you need it on file.</p>
+          <p>Yes &mdash; see our <a href="about.html#certifications">certifications</a>, and we'll happily send the certificate if you need it on file.</p>
         </div>
       </div>
     </div>

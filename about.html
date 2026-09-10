@@ -11,7 +11,7 @@
 <meta property="og:image" content="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Karla:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,7 +23,11 @@
       <span>Eggs Your Way</span>
     </a>
     <nav>
-      <a href="process.html">How it's made</a>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="why-it-works.html">Why it works</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="business.html">For Business</a>
       <a href="about.html" aria-current="page">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -79,6 +83,26 @@
     </div>
   </section>
 
+  <section id="certifications">
+    <div class="wrap">
+      <div class="head"><h2>Certifications</h2><p>Real licences, not badges we made up.</p></div>
+      <div class="trio">
+        <div class="card">
+          <h3>FSSAI licence</h3>
+          <p>Licence number [FSSAI number]. Certificate available on request.</p>
+        </div>
+        <div class="card">
+          <h3>Cold-chain handling</h3>
+          <p>[Describe how the cold chain is kept and checked, from pasteuriser to delivery &mdash; temperature logs, insulated transport, whatever is actually true.]</p>
+        </div>
+        <div class="card">
+          <h3>Batch testing</h3>
+          <p>[If a lab tests each batch, name it. If the check is something else, say what it is rather than leaving this blank.]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <div class="head">
@@ -106,12 +130,15 @@
     </div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="process.html">How it's made</a>
+      <a href="shop.html">Shop</a>
+      <a href="why-it-works.html">Why it works</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="business.html">For Business</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
   </div>
-  <div class="wrap"><p class="foot-note">FSSAI licence [number] &middot; &copy; <span id="yr">2026</span> Eggs Your Way</p></div>
+  <div class="wrap"><p class="foot-note"><a href="about.html#certifications">Certifications</a> &middot; &copy; <span id="yr">2026</span> Eggs Your Way</p></div>
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 

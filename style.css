@@ -1,6 +1,22 @@
 /* Eggs Your Way — shared styles.
    Colours sampled from the logo. Change them here, they change everywhere. */
 
+@font-face{
+  font-family:"New Spirit";
+  src:url("fonts/NewSpirit-Regular.otf") format("opentype");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"New Spirit";
+  src:url("fonts/NewSpirit-Medium.otf") format("opentype");
+  font-weight:500;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"New Spirit";
+  src:url("fonts/NewSpirit-SemiBold.otf") format("opentype");
+  font-weight:600;font-style:normal;font-display:swap;
+}
+
 :root{
   --sky:#84C8EE;
   --sky-pale:#E9F5FC;
@@ -12,7 +28,7 @@
   --yolk-deep:#F0B71E;
   --shell:#FFFFFF;
   --wrap:1060px;
-  --display:"Fredoka","Trebuchet MS",system-ui,sans-serif;
+  --display:"New Spirit","Trebuchet MS",system-ui,sans-serif;
   --body:"Karla","Helvetica Neue",Arial,sans-serif;
 }
 
@@ -36,18 +52,19 @@ img,svg{display:block;max-width:100%;}
 .mark{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;}
 .mark img{width:38px;height:38px;object-fit:contain;}
 .mark span{font-family:var(--display);font-size:19px;color:var(--ink);}
-.bar nav{display:flex;gap:20px;align-items:center;}
+.bar nav{display:flex;gap:16px;align-items:center;overflow-x:auto;scrollbar-width:none;}
+.bar nav::-webkit-scrollbar{display:none;}
 .bar nav a{
-  font-size:15.5px;font-weight:500;color:var(--ink);text-decoration:none;
-  padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap;
+  font-size:14.5px;font-weight:500;color:var(--ink);text-decoration:none;
+  padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap;flex-shrink:0;
 }
 .bar nav a:hover{border-bottom-color:var(--ink);}
 .bar nav a[aria-current="page"]{border-bottom-color:var(--ink);}
-@media (max-width:700px){
+@media (max-width:900px){
   .bar-in{height:60px;gap:12px;}
   .mark span{display:none;}
-  .bar nav{gap:15px;}
-  .bar nav a{font-size:14.5px;}
+  .bar nav{gap:13px;}
+  .bar nav a{font-size:14px;}
 }
 
 /* ---------- sky panels ---------- */
@@ -60,10 +77,8 @@ img,svg{display:block;max-width:100%;}
 .hero-logo{width:min(300px,62vw);margin:0 auto 22px;animation:settle .7s cubic-bezier(.2,.9,.3,1) both;}
 .hero h1{font-size:clamp(2.1rem,6.2vw,3.5rem);color:var(--teal);max-width:15ch;margin:0 auto;
   animation:rise .7s .18s cubic-bezier(.2,.9,.3,1) both;}
-.hero .sub{margin:20px auto 0;max-width:44ch;font-size:1.05rem;color:var(--ink);
-  animation:rise .7s .3s cubic-bezier(.2,.9,.3,1) both;}
 .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:30px 0 0;
-  animation:rise .7s .42s cubic-bezier(.2,.9,.3,1) both;}
+  animation:rise .7s .3s cubic-bezier(.2,.9,.3,1) both;}
 .hero .curve{margin-top:44px;}
 @media (max-width:640px){.hero .curve{margin-top:32px;}}
 
@@ -108,6 +123,7 @@ section{padding:38px 0 64px;scroll-margin-top:84px;}
 .egg-card svg{width:78px;height:78px;margin:0 auto 14px;}
 .egg-card h3{font-size:1.16rem;color:var(--teal);}
 .egg-card p{font-size:.94rem;margin-top:9px;color:var(--body-ink);line-height:1.55;}
+.egg-card .btn{margin-top:14px;}
 
 /* ---------- plain card grid ---------- */
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -116,6 +132,7 @@ section{padding:38px 0 64px;scroll-margin-top:84px;}
 .card h3{font-size:1.14rem;color:var(--teal);margin-bottom:9px;}
 .card p{font-size:.96rem;color:var(--body-ink);}
 .card p + p{margin-top:10px;}
+.card .cite{font-size:.85rem;font-weight:600;color:var(--teal);}
 
 /* ---------- converter ---------- */
 .calc{
@@ -285,7 +302,7 @@ section{padding:38px 0 64px;scroll-margin-top:84px;}
   100%{opacity:0;transform:translateY(-58px);}
 }
 
-/* ---------- photo placeholder (process page) ---------- */
+/* ---------- photo placeholder (process / shop pages) ---------- */
 .photo-slot{
   margin-top:22px;border:2px dashed var(--sky-mid);border-radius:26px;
   background:var(--sky-pale);padding:36px 24px;text-align:center;
@@ -294,6 +311,9 @@ section{padding:38px 0 64px;scroll-margin-top:84px;}
 .photo-slot svg{width:34px;height:34px;color:#84C8EE;}
 .photo-slot b{display:block;font-family:var(--display);font-size:1rem;color:var(--teal);}
 .photo-slot p{font-size:.9rem;color:#4c7d95;max-width:38ch;margin:2px auto 0;}
+.photo-slot.small{margin-top:0;margin-bottom:6px;padding:18px 12px;gap:6px;}
+.photo-slot.small svg{width:24px;height:24px;}
+.photo-slot.small p{font-size:.8rem;margin:0;}
 
 /* ---------- footer ---------- */
 footer{background:var(--teal);color:#dcf0fa;padding:44px 0 38px;}

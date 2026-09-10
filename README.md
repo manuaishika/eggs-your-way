@@ -1,19 +1,22 @@
 # Eggs Your Way
 
-Four-page static site for a pasteurised egg and liquid egg business.
+Static site for a pasteurised egg and liquid egg business.
 Plain HTML, one shared stylesheet, a little vanilla JavaScript. No build step,
 no dependencies, no npm.
 
 ```
-index.html     home — range, why pasteurised, converter, who it's for
-process.html   how it's made — the temperature trick, both production lines,
-               shelf life, and the section aimed at people who train
-about.html     about us (mostly placeholder copy, see below)
-contact.html   order form that composes a WhatsApp message, plus FAQs
-style.css      every style, shared by all four pages
-logo.png       the logo, trimmed
-favicon.png    tab icon
-build.py       optional — regenerates the four pages from shared header/footer
+index.html         home — range teaser, why pasteurised, reviews, converter, who it's for
+shop.html          the four products, each with a photo placeholder and a WhatsApp order link
+why-it-works.html  the pasteurisation science — the temperature trick, both production lines, shelf life
+recipes.html       recipe ideas that get simpler with pasteurised egg (placeholder copy, see below)
+business.html      pitch + ordering info for cafés, hotels, cloud kitchens and meal-prep services
+about.html         about us (mostly placeholder copy, see below) plus the certifications section
+contact.html       order form that composes a WhatsApp message, plus FAQs
+style.css          every style, shared by all pages
+logo.png           the logo, trimmed
+favicon.png        tab icon
+fonts/             New Spirit (self-hosted, see licensing note below)
+build.py           optional — regenerates every page from shared header/footer templates
 ```
 
 ## Putting it live
@@ -25,9 +28,16 @@ Source *Deploy from a branch*, branch `main`, folder `/ (root)`. Live at
 Preview locally with `python3 -m http.server` in this folder, then open
 `localhost:8000`.
 
+## Font licensing
+
+`fonts/NewSpirit-*.otf` need a genuine licence for New Spirit (Sharp Type /
+Adobe Fonts) before this goes out on the live, public site. Confirm the
+files in this folder came from an actual purchase or an active Adobe Fonts
+subscription — not a redistribution site — before deploying.
+
 ## build.py
 
-The nav and footer are identical on all four pages, which is exactly the kind of
+The nav and footer are identical on every page, which is exactly the kind of
 thing that drifts out of sync after a few edits. `build.py` holds them once and
 writes the pages out. Edit the page bodies in `build.py` and run `python3 build.py`,
 or ignore it entirely and edit the HTML directly — the site works either way. If you
@@ -37,40 +47,10 @@ stop using it, delete it so nobody overwrites their own edits by running it late
 
 | Placeholder | Where | What to put |
 |---|---|---|
-| `910000000000` | every WhatsApp link, and `phone` in contact.html's script | Number with country code, no `+` or spaces |
-| `+91 00000 00000` | footers, contact page | Same number, formatted for reading |
-| `hello@eggsyourway.in` | footers, contact page | Real email |
-| `[city]` | footers, contact page | Delivery area |
-| `[number]` | footer | FSSAI licence number |
-| Opening hours | footers, contact page | Real hours |
-| Pack sizes | home, "Getting it to you" | Real tray and pouch sizes |
-| All `[bracketed text]` | about.html, contact FAQs | His actual story and answers |
-
-`about.html` is deliberately a skeleton — an about page written by someone who has
-never met him is worse than no about page. The prompts in brackets say what each
-paragraph should do.
-
-## Things worth checking with him
-
-The process page states 57°C for about an hour for shell eggs, and 60–64°C for a few
-minutes for liquid egg. Those are the standard figures, but if his equipment runs a
-different schedule, correct them. Same for the shelf-life bars — they say "weeks,
-see the pack" rather than a number, on purpose. Put a real number in once you know it.
-
-## Brand colours
-
-Sampled from the logo, set as CSS variables at the top of `style.css`.
-
-| | |
-|---|---|
-| Sky | `#84C8EE` |
-| Deep teal | `#105E82` |
-| Ink | `#0B4560` — small text on the blue background; the deep teal fails contrast there |
-| Yolk | `#FFD447` |
-| Pale sky | `#E9F5FC` |
-
-## The converter
-
-Per large egg: 50 ml whole, 33 ml white, 17 ml yolk; protein and calories scale from
-the same table. It lives in the `data` object in index.html's script — one place to
-change if his cartons are sized to a different egg.
+| `[FSSAI number]` | about.html certifications section | Real FSSAI licence number |
+| Cold-chain / batch-testing copy | about.html certifications section | What's actually done, or which lab/standard is used |
+| `[Price]` / `[Price per tray]` | shop.html, one per product | Real prices per pack size |
+| `[Confirm the largest pack size...]`, standing-order schedule | business.html | Real bulk pack sizes and whether standing orders exist |
+| Recipe text marked `[Real recipe and quantities to come.]` | recipes.html, six cards | Actual recipes with quantities |
+| Review quotes and names | index.html "What people say" | Real customer quotes, or remove the section until there are some |
+| All other `[bracketed text]` | about.html, contact.html FAQs | His actual story, minimum order, delivery speed, and answers |
