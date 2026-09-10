@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Assembles the four pages so the nav and footer stay identical everywhere."""
 
-WA = "https://wa.me/910000000000?text=Hi!%20I%27d%20like%20to%20order%20eggs."
+WA = "https://wa.me/919599327947?text=Hi!%20I%27d%20like%20to%20order%20eggs."
 
 HEAD = """<!DOCTYPE html>
 <html lang="en">
@@ -44,11 +44,11 @@ FOOT = """</main>
   <div class="wrap foot-in">
     <div>
       <h3>Eggs Your Way</h3>
-      <p>Pasteurised shell eggs and liquid egg, delivered across [city].</p>
+      <p>Pasteurised shell eggs and liquid egg, delivered across Gurugram.</p>
     </div>
     <div>
-      <p><a href="https://wa.me/910000000000">+91 00000 00000</a></p>
-      <p><a href="mailto:hello@eggsyourway.in">hello@eggsyourway.in</a></p>
+      <p><a href="https://wa.me/919599327947">+91 95993 27947</a></p>
+      <p><a href="mailto:eggzurway@gmail.com">eggzurway@gmail.com</a></p>
       <p>Orders taken 9am to 7pm, Monday to Saturday.</p>
     </div>
     <nav>
@@ -565,9 +565,9 @@ contact = """
 
       <div class="contact-lines">
         <p>Or reach us directly</p>
-        <p><a href="https://wa.me/910000000000">+91 00000 00000</a></p>
-        <p><a href="mailto:hello@eggsyourway.in">hello@eggsyourway.in</a></p>
-        <p>9am to 7pm, Monday to Saturday. Deliveries across [city].</p>
+        <p><a href="https://wa.me/919599327947">+91 95993 27947</a></p>
+        <p><a href="mailto:eggzurway@gmail.com">eggzurway@gmail.com</a></p>
+        <p>9am to 7pm, Monday to Saturday. Deliveries across Gurugram.</p>
       </div>
     </div>
   </section>
@@ -595,7 +595,7 @@ contact = """
 
 FORM_JS = """<script>
 (function(){
-  var phone = '910000000000';   // change this in one place
+  var phone = '919599327947';   // change this in one place
   var btn = document.getElementById('send');
   if(!btn) return;
   btn.addEventListener('click', function(){
