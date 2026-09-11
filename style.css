@@ -175,8 +175,11 @@ section{padding:38px 0 64px;scroll-margin-top:84px;}
 
 /* ---------- made for ---------- */
 .for-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-@media (min-width:881px){.for-grid.of-three{grid-template-columns:repeat(3,1fr);max-width:760px;margin:0 auto;}}
-@media (max-width:880px){.for-grid{grid-template-columns:repeat(2,1fr);}}
+.for-grid.three{grid-template-columns:repeat(3,1fr);}
+@media (max-width:880px){
+  .for-grid{grid-template-columns:repeat(2,1fr);}
+  .for-grid.three{grid-template-columns:repeat(2,1fr);}
+}
 @media (max-width:440px){.for-grid{grid-template-columns:1fr;}}
 .for-item{text-align:center;padding:8px 6px;}
 .for-item .blob{
