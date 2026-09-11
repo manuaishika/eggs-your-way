@@ -722,7 +722,7 @@ business = """
   <section>
     <div class="wrap">
       <div class="head"><h2>Built for</h2></div>
-      <div class="for-grid">
+      <div class="for-grid of-three">
         <div class="for-item">
           <div class="blob" aria-hidden="true">%(cup)s</div>
           <h3>Caf&eacute;s and bakeries</h3>
