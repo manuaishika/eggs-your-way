@@ -181,19 +181,19 @@ home = """
       <div class="range">
         <article class="egg-card">%(i1)s
           <h3>Pasteurised shell eggs</h3>
-          <p>Ordinary-looking eggs, gently heat-treated in the shell. Crack them into tiramisu, mayonnaise or a morning shake without thinking twice.</p>
+          <p>Ordinary eggs, heat-treated in the shell. Crack them into tiramisu or a shake without a second thought.</p>
         </article>
         <article class="egg-card">%(i2)s
           <h3>Liquid whole egg</h3>
-          <p>Whites and yolks cracked, blended and pasteurised. One litre pours about twenty eggs, and there are no shells to deal with.</p>
+          <p>Cracked, blended and pasteurised. One litre pours about twenty eggs, no shells.</p>
         </article>
         <article class="egg-card">%(i3)s
           <h3>Liquid egg white</h3>
-          <p>Just the whites, ready to whisk. For meringue, macarons, omelettes and anyone counting their protein.</p>
+          <p>Just the whites, ready to whisk. For meringue, omelettes, and anyone counting protein.</p>
         </article>
         <article class="egg-card">%(i4)s
           <h3>Liquid egg yolk</h3>
-          <p>Only yolks, deep and rich. Made for custard, ice cream bases, hollandaise and a properly glossy carbonara.</p>
+          <p>Only yolks, deep and rich. For custard, ice cream bases and a glossy carbonara.</p>
         </article>
       </div>
       <div style="text-align:center;margin-top:30px">
@@ -206,20 +206,20 @@ home = """
     <div class="wrap">
       <div class="head">
         <h2>Why pasteurised</h2>
-        <p>Warmed to just below the point where an egg sets. Long enough to deal with salmonella, gentle enough that it still behaves exactly like an egg.</p>
+        <p>Warmed just below the point an egg sets &mdash; enough to deal with salmonella, gentle enough to still behave like an egg.</p>
       </div>
       <div class="trio">
         <div class="card">
           <h3>Raw recipes, no gamble</h3>
-          <p>Tiramisu, mousse, aioli, cookie dough, protein shakes. The recipes that always came with a warning simply stop being risky.</p>
+          <p>Tiramisu, mousse, aioli, cookie dough. The recipes that came with a warning stop being risky.</p>
         </div>
         <div class="card">
           <h3>Safe for everyone at the table</h3>
-          <p>Small children, pregnant women, older parents and anyone with a fragile immune system can eat what the rest of the family is eating.</p>
+          <p>Kids, pregnant women, older parents &mdash; anyone can eat what the rest of the family is eating.</p>
         </div>
         <div class="card">
           <h3>Nothing else goes in</h3>
-          <p>No preservatives, no colour, no additives. Heat and time do the work, so taste and texture stay where they should.</p>
+          <p>No preservatives, no colour, no additives. Heat and time do the work.</p>
         </div>
       </div>
     </div>
@@ -254,7 +254,7 @@ home = """
       <div class="head">
         %(arc)s
         <h2>How much is that, really?</h2>
-        <p>Your recipe counts eggs and your macros count grams. The carton is in millilitres. Here's the sum, so nobody has to do it at the counter.</p>
+        <p>Recipes count eggs, macros count grams, the carton's in millilitres. Here's the sum.</p>
       </div>
       <div class="calc">
         <div>
@@ -278,7 +278,7 @@ home = """
           <div class="dots" id="dots" aria-hidden="true"></div>
         </div>
       </div>
-      <p class="footnote">Based on a large egg: 50 ml whole, 33 ml white, 17 ml yolk. Millilitres and grams are near enough the same here.</p>
+      <p class="footnote">Based on a large egg: 50 ml whole, 33 ml white, 17 ml yolk.</p>
     </div>
   </section>
 
@@ -329,7 +329,7 @@ home = """
         </div>
         <div class="card">
           <h3>Keeps for weeks</h3>
-          <p>Sealed and refrigerated, liquid egg outlasts a fresh crack by a long way. The date is printed on every pack.</p>
+          <p>Sealed and refrigerated, liquid egg outlasts a fresh crack. The date's on every pack.</p>
         </div>
       </div>
       <div style="text-align:center;margin-top:38px">
@@ -449,7 +449,7 @@ why_it_works = """
       <div class="head">
         %(arc)s
         <h2>The whole trick is six degrees</h2>
-        <p>An egg white starts to set at about 63&deg;C. Salmonella gives up a little below that. Hold the egg in the gap for long enough and one dies while the other stays liquid.</p>
+        <p>An egg white sets at about 63&deg;C; salmonella gives up a bit below that. Hold the egg in that gap and one dies while the other stays liquid.</p>
       </div>
       <div class="temp">
         <div class="temp-bar">
@@ -467,19 +467,19 @@ why_it_works = """
       <div class="steps">
         <div class="step"><div class="n">1</div><div>
           <h3>They arrive fresh and get graded</h3>
-          <p>Eggs come in from the farm, are checked for cracks and washed. A cracked egg never makes it to the bath.</p>
+          <p>Eggs arrive from the farm, checked for cracks and washed. A cracked egg never makes the bath.</p>
         </div></div>
         <div class="step"><div class="n">2</div><div>
           <h3>Into the water</h3>
-          <p>Held at a steady 57&deg;C for roughly an hour. The temperature is watched the whole time, because a couple of degrees either way is the difference between safe and scrambled.</p>
+          <p>Held at 57&deg;C for about an hour, watched throughout &mdash; a couple of degrees either way is safe versus scrambled.</p>
         </div></div>
         <div class="step"><div class="n">3</div><div>
           <h3>Chilled straight down</h3>
-          <p>Out of the bath and cooled quickly, so the egg spends as little time as possible at temperatures bacteria like.</p>
+          <p>Out of the bath and cooled fast, so it spends as little time as possible at temperatures bacteria like.</p>
         </div></div>
         <div class="step"><div class="n">4</div><div>
           <h3>Sealed, stamped, boxed</h3>
-          <p>Each egg is marked so you can tell it apart from an ordinary one, then trayed and moved into cold storage.</p>
+          <p>Marked so you can tell it apart from an ordinary egg, then trayed into cold storage.</p>
         </div></div>
       </div>
       <div class="photo-slot">
@@ -495,24 +495,24 @@ why_it_works = """
       <div class="head">
         %(arc)s
         <h2>Liquid egg, step by step</h2>
-        <p>Same idea, different shape. Because the egg is already out of its shell, it can be heated harder for a much shorter time.</p>
+        <p>Same idea, different shape &mdash; out of the shell, it can be heated harder for much less time.</p>
       </div>
       <div class="steps">
         <div class="step"><div class="n">1</div><div>
           <h3>Cracked and separated</h3>
-          <p>Machines crack and split whites from yolks, or keep them together for whole egg. Shell fragments are filtered out.</p>
+          <p>Machines crack and split whites from yolks, or keep them together for whole egg, filtering out shell fragments.</p>
         </div></div>
         <div class="step"><div class="n">2</div><div>
           <h3>Blended smooth</h3>
-          <p>Gently mixed so every millilitre pours the same. No more fishing a stray chalaza out of your batter.</p>
+          <p>Mixed so every millilitre pours the same &mdash; no fishing a stray chalaza out of your batter.</p>
         </div></div>
         <div class="step"><div class="n">3</div><div>
           <h3>Through the pasteuriser</h3>
-          <p>A few minutes at around 60 to 64&deg;C in a continuous flow, then straight into a chiller. Quick, because nothing has to travel through a shell.</p>
+          <p>A few minutes at 60&ndash;64&deg;C in a continuous flow, then straight into a chiller &mdash; quick, since nothing travels through a shell.</p>
         </div></div>
         <div class="step"><div class="n">4</div><div>
           <h3>Filled and sealed cold</h3>
-          <p>Packed into sealed pouches and cartons at low temperature, dated, and kept at 4&deg;C until it reaches you.</p>
+          <p>Packed into sealed pouches at low temperature, dated, and kept at 4&deg;C until it reaches you.</p>
         </div></div>
       </div>
       <div class="photo-slot">
@@ -527,7 +527,7 @@ why_it_works = """
     <div class="wrap">
       <div class="head">
         <h2>Why it lasts longer</h2>
-        <p>Not a preservative in sight. Shelf life comes from starting with fewer bacteria and never letting the pack warm up.</p>
+        <p>No preservatives &mdash; shelf life just comes from fewer bacteria to start and never letting the pack warm up.</p>
       </div>
       <div class="bars">
         <div class="bar-row">
@@ -546,15 +546,15 @@ why_it_works = """
       <div class="trio" style="margin-top:40px">
         <div class="card">
           <h3>Less waste at home</h3>
-          <p>Half a recipe no longer means three lonely yolks in the fridge hoping to become something.</p>
+          <p>Half a recipe no longer means three lonely yolks waiting in the fridge.</p>
         </div>
         <div class="card">
           <h3>Nothing added</h3>
-          <p>The longer life comes from heat and cold, not from anything on an ingredients list. The ingredients list says: egg.</p>
+          <p>The longer life comes from heat and cold, not anything on an ingredients list. It says: egg.</p>
         </div>
         <div class="card">
           <h3>Same egg, same cooking</h3>
-          <p>It whisks, sets and browns the way you expect. Meringue takes a minute or two longer to reach stiff peaks, and that is the only difference you will notice.</p>
+          <p>It whisks, sets and browns as expected. Meringue just takes a minute longer to peak.</p>
         </div>
       </div>
     </div>
@@ -570,15 +570,15 @@ why_it_works = """
       <div class="trio">
         <div class="card">
           <h3>Pour it, don't count it</h3>
-          <p>200 ml of egg white is about 22 g of protein for roughly 105 calories, with no fat worth mentioning. Same pour, same numbers, every morning.</p>
+          <p>200 ml of egg white is about 22 g protein, 105 calories, no fat worth mentioning. Same pour, every morning.</p>
         </div>
         <div class="card">
           <h3>Raw is actually fine now</h3>
-          <p>Straight into the shaker with oats or a scoop, no cooking, no salmonella roulette. That is the entire reason pasteurised egg exists.</p>
+          <p>Straight into the shaker with oats or a scoop &mdash; no cooking, no salmonella roulette.</p>
         </div>
         <div class="card">
           <h3>Six minutes back</h3>
-          <p>Cracking and separating eight eggs takes time and leaves a mess. Pouring takes ten seconds and the bin stays empty.</p>
+          <p>Cracking eight eggs takes time and leaves a mess. Pouring takes ten seconds.</p>
         </div>
       </div>
       <div style="text-align:center;margin-top:38px">
@@ -629,22 +629,22 @@ shop = """
 """ % dict(
     curve=CURVE,
     p1=product_card("Pasteurised shell eggs",
-                     "Ordinary-looking eggs, gently heat-treated in the shell. Crack them into tiramisu, mayonnaise or a morning shake without thinking twice.",
+                     "Ordinary eggs, heat-treated in the shell. Crack them into tiramisu or a shake without a second thought.",
                      "Trays of 6, 12 and 30. [Price per tray]",
                      wa("Hi! I'd like to order pasteurised shell eggs."),
                      egg_icon("s1", "A whole egg in its shell", highlight=True)),
     p2=product_card("Liquid whole egg",
-                     "Whites and yolks cracked, blended and pasteurised. One litre pours about twenty eggs, and there are no shells to deal with.",
+                     "Cracked, blended and pasteurised. One litre pours about twenty eggs, no shells.",
                      "1 kg pouch or 5 kg box. [Price]",
                      wa("Hi! I'd like to order liquid whole egg."),
                      bottle_icon("s2", "A bottle of liquid whole egg", fill="#FFD447", level=50)),
     p3=product_card("Liquid egg white",
-                     "Just the whites, ready to whisk. For meringue, macarons, omelettes and anyone counting their protein.",
+                     "Just the whites, ready to whisk. For meringue, omelettes, and anyone counting protein.",
                      "1 kg pouch or 5 kg box. [Price]",
                      wa("Hi! I'd like to order liquid egg white."),
                      bottle_icon("s3", "A bottle of liquid egg white", fill="#EDF7FD", level=50, top_stroke="#84C8EE")),
     p4=product_card("Liquid egg yolk",
-                     "Only yolks, deep and rich. Made for custard, ice cream bases, hollandaise and a properly glossy carbonara.",
+                     "Only yolks, deep and rich. For custard, ice cream bases and a glossy carbonara.",
                      "1 kg pouch or 5 kg box. [Price]",
                      wa("Hi! I'd like to order liquid egg yolk."),
                      bottle_icon("s4", "A bottle of liquid egg yolk", fill="#F0B71E", level=34)),
@@ -752,7 +752,7 @@ business = """
         </div>
         <div class="card">
           <h3>Standing orders</h3>
-          <p>[Is there a fixed weekly schedule for business accounts? Say so here, with the cut-off time to change an order.]</p>
+          <p>[Fixed weekly schedule for business accounts? Include the cut-off time to change an order.]</p>
         </div>
         <div class="card">
           <h3>Paperwork sorted</h3>
@@ -775,7 +775,7 @@ about = """
   <div class="sky-panel page-head">
     <div class="wrap">
       <h1>We got tired of throwing eggs away</h1>
-      <p>[Replace this with the real reason he started. One honest sentence beats a paragraph of mission statement.]</p>
+      <p>[The real reason he started &mdash; one honest sentence beats a mission statement.]</p>
     </div>
 %(curve)s
   </div>
@@ -785,13 +785,13 @@ about = """
       <div class="duo">
         <div class="prose">
           <h3>How it started</h3>
-          <p>[Two or three sentences. What he was doing before, what went wrong or what he noticed, and the moment it turned into a business. Keep it specific &mdash; a real detail is worth more than any adjective.]</p>
-          <p>[Where the eggs come from, and why those farms. If he visits them, say so.]</p>
+          <p>[A few sentences: what he did before, what he noticed, and the moment it became a business. Be specific.]</p>
+          <p>[Where the eggs come from, and why those farms.]</p>
         </div>
         <div class="prose">
           <h3>How we work</h3>
-          <p>[What happens in a normal week. Batch sizes, how often you pasteurise, how quickly an order goes out.]</p>
-          <p>[Anything he refuses to do &mdash; no preservatives, no reselling other people's stock, no breaking the cold chain to save a trip. This is usually the most convincing part of an about page.]</p>
+          <p>[A normal week &mdash; batch sizes, how often you pasteurise, how fast an order ships.]</p>
+          <p>[Anything he refuses to do &mdash; no preservatives, no reselling, no breaking the cold chain. Often the most convincing line on an about page.]</p>
         </div>
       </div>
     </div>
@@ -827,11 +827,11 @@ about = """
         </div>
         <div class="card">
           <h3>Cold-chain handling</h3>
-          <p>[Describe how the cold chain is kept and checked, from pasteuriser to delivery &mdash; temperature logs, insulated transport, whatever is actually true.]</p>
+          <p>[How the cold chain is kept and checked &mdash; temperature logs, insulated transport, whatever's true.]</p>
         </div>
         <div class="card">
           <h3>Batch testing</h3>
-          <p>[If a lab tests each batch, name it. If the check is something else, say what it is rather than leaving this blank.]</p>
+          <p>[Name the lab if one tests each batch, or say what check actually happens.]</p>
         </div>
       </div>
     </div>
@@ -842,7 +842,7 @@ about = """
       <div class="head">
         %(arc)s
         <h2>Who you'll be talking to</h2>
-        <p>[Names and one line each. A small business is allowed to sound like people rather than a company.]</p>
+        <p>[Names and one line each &mdash; a small business can sound like people, not a company.]</p>
       </div>
       <div style="text-align:center">
         <a class="btn btn-yolk" href="contact.html">Say hello</a>
@@ -904,11 +904,11 @@ contact = """
       <div class="trio">
         <div class="card">
           <h3>Is there a minimum order?</h3>
-          <p>[Yes or no, and the number. Say it plainly here rather than making people ask.]</p>
+          <p>[Yes or no, and the number &mdash; say it plainly.]</p>
         </div>
         <div class="card">
           <h3>How fast is delivery?</h3>
-          <p>[Same day, next day, fixed days of the week &mdash; whatever is true, including the cut-off time for an order.]</p>
+          <p>[Same day, next day, or fixed days &mdash; plus the order cut-off time.]</p>
         </div>
         <div class="card">
           <h3>Can I see the licence?</h3>
