@@ -33,7 +33,7 @@ HEAD = """<!DOCTYPE html>
 <header class="bar">
   <div class="wrap bar-in">
     <a class="mark" href="index.html">
-      <img src="logo.png" alt="Eggs Your Way">
+      <img src="logo.svg" alt="Eggs Your Way">
       <span>Eggs Your Way</span>
     </a>
     <nav>
@@ -161,7 +161,7 @@ def page(name, title, desc, body, extra="", filename=None):
 home = """
   <div class="sky-panel hero">
     <div class="wrap">
-      <img class="hero-logo" src="logo.png" alt="Eggs Your Way logo: bold lettering inside an egg with a yolk trailing speed lines">
+      <img class="hero-logo" src="logo.svg" alt="Eggs Your Way logo: bold lettering inside an egg with a yolk trailing speed lines">
       <h1>Eggs you can eat raw. And eggs you can pour.</h1>
       <div class="hero-cta">
         <a class="btn btn-yolk" href="%(wa)s" target="_blank" rel="noopener">Order on WhatsApp</a>
