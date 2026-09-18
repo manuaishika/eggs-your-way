@@ -33,7 +33,6 @@ HEAD = """<!DOCTYPE html>
 <header class="bar">
   <div class="wrap bar-in">
     <a class="mark" href="index.html">
-      <img src="logo.svg" alt="Eggs Your Way">
       <span>Eggs Your Way</span>
     </a>
     <nav>
